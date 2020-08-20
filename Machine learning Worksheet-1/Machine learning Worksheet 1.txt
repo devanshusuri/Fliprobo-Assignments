@@ -9,7 +9,7 @@ Solutions:-
 
 4.(D) Support Vector Classifier
 
-5.(A) 2.205 × old coefficient of ‘X’ 
+5.(C) old coefficient of ‘X’ ÷ 2.205
 
 6.(B) increases
 
