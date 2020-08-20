@@ -1,0 +1,110 @@
+Machine learning Worksheet - 1
+Solutions:-
+
+1.(C) between -1 and 1
+
+2.(D) Ridge Regularisation
+
+3.(C) hyperplane
+
+4.(A) Logistic Regression
+
+5.(A) 2.205 × old coefficient of ‘X’ 
+
+6.(B) increases
+
+7.(C) Random Forests are easy to interpret
+
+8.(B) Principal Components are calculated using unsupervised learning techniques
+  (C) Principal Components are linear combinations of Linear Variables.
+
+9.(A) Identifying developed, developing and under-developed countries on the basis of factors like GDP, poverty
+index, employment rate, population and living index
+  (B) Identifying loan defaulters in a bank on the basis of previous years’ data of loan accounts.
+  (C) Identifying spam or ham emails
+  (D) Identifying different segments of disease based on BMI, blood pressure, cholesterol, blood sugar levels
+ 
+10.(A) max_depth 
+  (B) max_features
+  (D) min_samples_leaf
+
+11. 
+An outlier is an observation that lies an abnormal distance from other values in a random sample from a population.In other words,Outliers are observations which are far enough away from the mean (or from nearly all of the data points) that they are noticeably different.
+
+Simple method to detect outlier is by Interquartile Range (IQR)
+
+-1.5XIQR to 1.5 X IQR
+
+The interquartile range is just the width of the box in the box-and-whisker plot. That is, IQR = Q3 – Q1 . The IQR can be used as a measure of how spread-out the values are.
+
+The IQR tells how spread out the "middle" values are; it can also be used to tell when some of the other values are "too far" from the central value. These "too far away" points are called "outliers", because they "lie outside" the range in which we expect them.
+
+The IQR is the length of the box in box-and-whisker plot. An outlier is any value that lies more than one and a half times the length of the box from either end of the box.
+
+Example:
+
+Sample: 4, 7, 9, 11, 12, 20 (arranged in ascending order)
+
+Divide sample into 2 so lower half is 4, 7, 9 and upper half is 11, 12, 20
+
+Find Median of lower and upper half which is 7 and 12 respectively
+
+So Q1 = 7 and Q3 = 12
+
+IQR = Q3 - Q1 which is 5 (12 -7 = 5)
+
+Outliers: a = Q1 - (1.5*IQR)=0.5; b = Q3 = Q3 + (1.5*IQR)=19.5
+            
+any number < a or > b is an outlier.
+
+Hence in our sample 20 is an outlier.
+
+12.
+1)Bagging is a way to decrease the variance in the prediction by generating additional data for training from dataset using combinations with repetitions to produce multi-sets of the origin
+al data. Boosting is an iterative technique which adjusts the weight of an observation based on the last classification.
+2)In Bagging aim is to decrease variance, not bias also suitable for complex models and in boosting aim to decrease bias, not variance.
+3)Bagging is a parallel ensemble i.e each model is built independently and boosting sequential ensemble i.e try to add new models that do well where previous models lack.
+4)an example of a tree based method is random forest in bagging and an example of a tree based method is gradient boosting in boosting.
+
+13.
+Adjusted R^2 in logistic regression: - 
+We use adjusted R-squared to compare the goodness-of-fit for regression models that contain differing   numbers of independent variables.
+Let’s say we are comparing a model with five independent variables to a model with one variable and the five variable model has a higher R-squared.
+Is the model with five variables actually a better model, or does it just have more variables? To determine this, just compare the adjusted R-squared values.
+The adjusted R-squared adjusts for the number of terms in the model. Importantly, its value increases only when the new term improves the model fit more than 
+expected by chance alone. 
+The adjusted R-squared value actually decreases when the term doesn’t improve the model fit by a sufficient amount.
+
+Adjusted R^2 Value Calculation:
+Adjusted R-squared value can be calculated based on value of r-squared, number of independent variables (predictors), total sample size. 
+Every time you add an independent variable to a model, the R-squared increases, even if the independent variable is insignificant. It never declines.
+Mathmatical formula of Adjusted R-squared value is given as:
+Ajd rsquared = 1-{(n-1)/(n-k-1)*(RSS/TSS)}
+     where,n=total no of observation
+           k= no of features
+           RSS=squared sum of difference between actual observed value and predictive values
+           TSS =squared sum of difference between actual observed value and predictive values and mean of all values. 
+We can calculate the adjusted r2score using sklearn as follow:
+       # using formula
+       import statsmodels.formula.api as sm
+       result = sm.ols(formula="Y ~ X1+ X2", data=df).fit()
+       #print result.summary()
+       result.rsquared, result.rsquared_adj
+
+14.
+1)Normalization usually means to scale a variable to have a values between 0 and 1, while standardization transforms data to have a mean of zero and a standard deviation of 1
+Normalization is good to use when you know that the distribution of your data does not follow a Gaussian distribution. This can be useful in algorithms that do not assume any distribution of the data like K-Nearest Neighbors and Neural Networks.
+2)Standardization, on the other hand, can be helpful in cases where the data follows a Gaussian distribution. However, this does not have to be necessarily true. Also, unlike normalization, standardization does not have a bounding range. So, even if you have outliers in your data, they will not be affected by standardization.
+
+15.
+Cross Validation is a great technique to deal with overfitting problem in various algorithms. Instead of training our model on one training dataset, we train our model on many datasets.
+
+Advantages of Cross Validation:-
+
+Reduces Overfitting: In Cross Validation, we split the dataset into multiple folds and train the algorithm on different folds. This prevents our model from overfitting the training dataset. So, in this way, the model attains the generalization capabilities which is a good sign of a robust algorithm.
+
+Note:( Chances of overfitting are less if the dataset is large. So, Cross Validation may not be required at all in the situation where we have sufficient data available). 
+
+Increases Training Time: Cross Validation drastically increases the training time. Earlier we had to train our model only on one training set, but with Cross Validation we have to train your model on multiple training sets. 
+
+For example, if we go with 5 Fold Cross Validation, we need to do 5 rounds of training each on different 4/5 of available data. And this is for only one choice of hyperparameters. If we have multiple choice of parameters, then the training period will shoot too high.
