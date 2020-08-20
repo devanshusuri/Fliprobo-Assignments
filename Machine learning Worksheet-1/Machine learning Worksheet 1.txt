@@ -7,7 +7,7 @@ Solutions:-
 
 3.(C) hyperplane
 
-4.(A) Logistic Regression
+4.(D) Support Vector Classifier
 
 5.(A) 2.205 × old coefficient of ‘X’ 
 
